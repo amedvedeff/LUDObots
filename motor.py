@@ -23,12 +23,15 @@ class MOTOR:
         for i in range(c.numSteps):
             self.motorValues[i] = (self.amplitude * numpy.sin(self.frequency * self.values[i] + self.offset))
 
-    def Set_Value(self, robot, t):
+    def Set_Value(self, robot, desiredAngle):
+#only included the following if statement to make the YT video look right
+        if self.jointName == "Torso_FrontLeg":
+            desiredAngle *= -1
         pyrosim.Set_Motor_For_Joint(
             bodyIndex = robot,
             jointName = self.jointName,
             controlMode = p.POSITION_CONTROL,
-            targetPosition = self.motorValues[t],
+            targetPosition = desiredAngle,
             maxForce = c.forceAmount)
 
     def Save_Values(self):

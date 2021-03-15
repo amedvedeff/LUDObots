@@ -11,6 +11,7 @@ import math
 import random
 import pathlib
 
+
 class SIMULATION:
 
     def __init__(self):
@@ -34,6 +35,7 @@ class SIMULATION:
         for x in range (0, c.numSteps):
             p.stepSimulation()
             self.robot.Sense(x)
+            self.robot.Think()
             self.robot.Act(x)
             time.sleep(c.sleepAmount)
 
