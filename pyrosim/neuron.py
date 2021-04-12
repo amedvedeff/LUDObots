@@ -6,7 +6,10 @@ import pyrosim.pyrosim as pyrosim
 
 import pyrosim.constants as c
 
-class NEURON: 
+from pyrosim.synapse import SYNAPSE
+
+class NEURON:
+
 
     def __init__(self,line):
 
@@ -122,9 +125,21 @@ class NEURON:
 
         self.value = math.tanh(self.value)
 
+    def Allow_Presynaptic_Neuron_To_Influence_Me(self, currSynapseWeight, presynapticNeuronValue):
+        presynapticNeuronValue = float(presynapticNeuronValue)
+        currSynapseWeight = float(currSynapseWeight)
+        self.Add_To_Value(presynapticNeuronValue * currSynapseWeight)
+
     def Update_Sensor_Neuron(self):
         self.Set_Value(pyrosim.Get_Touch_Sensor_Value_For_Link(self.Get_Link_Name()))
 
-    def Update_Hidden_Or_Motor_Neuron(self):
-        x = math.pi / 4.0
+    def Update_Hidden_Or_Motor_Neuron(self, neurons, synapses):
+        x = 0
         self.Set_Value(x)
+        for y in synapses:
+            if self.Get_Name() == y[1]:
+                self.Allow_Presynaptic_Neuron_To_Influence_Me(synapses[y].Get_Weight(), neurons[y[0]].Get_Value())
+        self.Threshold()
+
+
+
