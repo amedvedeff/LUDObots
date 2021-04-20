@@ -10,3 +10,5 @@ backLegPhaseOffset = 0
 
 forceAmount = 50
 sleepAmount = 1/60
+
+numberOfGenerations = 10
