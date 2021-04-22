@@ -15,7 +15,7 @@ import pathlib
 
 class SIMULATION:
 
-    def __init__(self, directOrGUI):
+    def __init__(self, directOrGUI, solutionID):
         if directOrGUI == "DIRECT":
             self.physicsClient = p.connect(p.DIRECT)
         elif directOrGUI == "GUI":
@@ -25,7 +25,7 @@ class SIMULATION:
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         p.setGravity(0,0,-9.8)
         self.world = WORLD()
-        self.robot = ROBOT()
+        self.robot = ROBOT(solutionID)
 
     def Run(self):
         backLegSensorValues = numpy.zeros(c.numSteps)
@@ -46,8 +46,8 @@ class SIMULATION:
             if self.directOrGUI == "GUI":
                 time.sleep(c.sleepAmount)
 
-    def Get_Fitness(self):
-        self.robot.Get_Fitness()
+    def Get_Fitness(self, solutionID):
+        self.robot.Get_Fitness(solutionID)
 
     def __del__(self):
         p.disconnect()

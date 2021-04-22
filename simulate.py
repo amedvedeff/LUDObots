@@ -4,6 +4,7 @@ import sys
 
 
 direcotOrGUI = sys.argv[1]
-simulation = SIMULATION(direcotOrGUI)
+solutionID = sys.argv[2]
+simulation = SIMULATION(direcotOrGUI, solutionID)
 simulation.Run()
-simulation.Get_Fitness()
+simulation.Get_Fitness(solutionID)
