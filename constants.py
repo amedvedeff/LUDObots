@@ -13,3 +13,6 @@ sleepAmount = 1/60
 
 numberOfGenerations = 10
 populationSize = 10
+
+numSensorNeurons = 9
+numMotorNeurons = 8
