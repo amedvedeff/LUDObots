@@ -14,5 +14,7 @@ sleepAmount = 1/60
 numberOfGenerations = 10
 populationSize = 10
 
-numSensorNeurons = 9
-numMotorNeurons = 8
+numSensorNeurons = 8
+numMotorNeurons = 4
+
+motorJointRange = 0.2
