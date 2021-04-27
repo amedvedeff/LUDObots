@@ -11,8 +11,9 @@ backLegPhaseOffset = 0
 forceAmount = 50
 sleepAmount = 1/60
 
-numberOfGenerations = 10
+numberOfGenerations = 1
 populationSize = 10
+numberOfIndividualsAddedEachGeneration = 1
 
 numSensorNeurons = 8
 numMotorNeurons = 4

@@ -8,6 +8,7 @@ class SOLUTION:
     def __init__(self, nextAvailableID):
         self.weights = (numpy.random.rand(c.numSensorNeurons,c.numMotorNeurons) * 2) - 1
         self.myID = nextAvailableID
+        self.myAge = 0
 
     def Evaluate(self, directOrGUI):
         self.Create_World()
